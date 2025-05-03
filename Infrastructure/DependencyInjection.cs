@@ -42,7 +42,10 @@ namespace Infrastructure
                 };
             });
 
+            services.AddHttpContextAccessor();
             services.AddScoped<TokenService>();
+            services.AddScoped<IBidRepository, BidRepository>();
+            services.AddScoped<ICurrentUserService, CurrentUserService>();
             services.AddScoped(typeof(IRepository<>), typeof(GenericRepository<>));
             services.AddScoped<IAuthRepository, AuthRepository>();
 
