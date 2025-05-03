@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Application.DTOs.Bid;
 using Application.DTOs.User;
 using Application.Features.Users.Commands.LoginUser;
 using Application.Features.Users.Commands.RegisterUser;
@@ -25,6 +26,17 @@ namespace Application.Mapping
 
             CreateMap<UserRegistrationDto, RegisterUserCommand>();
             CreateMap<UserLoginDto, LoginUserCommand>();
+
+            // Queries
+            CreateMap<Bid, BidDto>()
+                .ForMember(dest => dest.Username, opt => opt.MapFrom(src => src.Bidder.Username));
+
+            CreateMap<Bid, UserBidDto>()
+                .ForMember(dest => dest.ListingTitle, opt => opt.MapFrom(src => src.Listing.Title));
+
+            // Commands
+            CreateMap<Bid, BidCreatedDto>();
+            CreateMap<Bid, BidRetractedDto>();
         }
     }
 }

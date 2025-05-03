@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Application.Behaviors;
+using Application.Features.Bids.Queries.GetUserBids;
 using FluentValidation;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;

@@ -10,6 +10,8 @@ namespace API
         {
             var builder = WebApplication.CreateBuilder(args);
 
+            builder.Services.AddApplicationServices().AddInfrastructureServices(builder.Configuration);
+
             builder.Services.AddControllers();
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen(options =>
@@ -36,7 +38,7 @@ namespace API
                 });
             });
 
-            builder.Services.AddApplicationServices().AddInfrastructureServices(builder.Configuration);
+            
 
             var app = builder.Build();
 
