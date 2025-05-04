@@ -17,10 +17,11 @@ namespace Application.Features.Bids.Queries.GetListingBids
         private readonly IBidRepository _bidRepository;
         private readonly IRepository<Listing> _listingRepository;
         private readonly IMapper _mapper;
-        public GetListingBidsQueryHandler(IBidRepository bidRepository, IMapper mapper)
+        public GetListingBidsQueryHandler(IBidRepository bidRepository, IMapper mapper, IRepository<Listing> listingRepository)
         {
             _bidRepository = bidRepository;
             _mapper = mapper;
+            _listingRepository = listingRepository;
         }
         public async Task<OperationResult<ListingBidsVm>> Handle(GetListingBidsQuery request, CancellationToken cancellationToken)
         {
@@ -35,7 +36,7 @@ namespace Application.Features.Bids.Queries.GetListingBids
             // Get the bids for the listing
             var bidsResult = await _bidRepository.GetByListingIdAsync(request.ListingId);
 
-            if (!bidsResult.IsSuccess || bidsResult == null)
+            if (!bidsResult.IsSuccess || bidsResult.Data == null)
                 return OperationResult<ListingBidsVm>.Failure("No bids found for this listing");
 
             var bids = bidsResult.Data;

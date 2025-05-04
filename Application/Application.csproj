@@ -11,6 +11,9 @@
     <Folder Include="Features\Listings\Commands\" />
     <Folder Include="Features\Listings\Queries\" />
     <Folder Include="Features\Users\Queries\" />
+    <Folder Include="Validators\Bid\" />
+    <Folder Include="Validators\Listing\" />
+    <Folder Include="Validators\User\" />
   </ItemGroup>
 
   <ItemGroup>
