@@ -1,0 +1,236 @@
+{
+	"info": {
+		"_postman_id": "055fe426-9281-4913-bd12-f8361200030c",
+		"name": "Tinga",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "40496878"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "register",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"username\": \"username\",\r\n  \"password\": \"password\",\r\n  \"confirmPassword\": \"confirmPassword\",\r\n  \"email\": \"email\",\r\n  \"firstName\": \"firstName\",\r\n  \"lastName\": \"lastName\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7296/api/Auth/register",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7296",
+							"path": [
+								"api",
+								"Auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"username\": \"string\",\r\n  \"password\": \"string\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7296/api/Auth/login",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7296",
+							"path": [
+								"api",
+								"Auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Bids",
+			"item": [
+				{
+					"name": "GetBidsFromListingId",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "loginToAccessToken",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7296/api/Bids/listing/C16EEA6D-EE50-465E-AB82-4F702B6B74B5",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7296",
+							"path": [
+								"api",
+								"Bids",
+								"listing",
+								"C16EEA6D-EE50-465E-AB82-4F702B6B74B5"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetBidsFromLoggedInUser",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "loginToAccessToken",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7296/api/Bids/user",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7296",
+							"path": [
+								"api",
+								"Bids",
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CreateBid",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "loginToAccessToken",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"listingId\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\r\n  \"amount\": 0\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7296/api/Bids",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7296",
+							"path": [
+								"api",
+								"Bids"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "RetractBid",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "loginToAccessToken",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7296/api/Bids/C16EEA6D-EE50-465E-AB82-4F702B6B74B5/retract",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7296",
+							"path": [
+								"api",
+								"Bids",
+								"C16EEA6D-EE50-465E-AB82-4F702B6B74B5",
+								"retract"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
